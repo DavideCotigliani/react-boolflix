@@ -49,7 +49,7 @@ function App() {
     <>
       <h1>Cerca film e serie TV</h1>
       <form onSubmit={handleEndpoint}>
-        <input type="text" name="title" placeholder="Cerca film" value={userDigit} onChange={handleUserChange} />
+        <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
         <button type="submit">Cerca</button>
       </form>
       {films.map((film) => (
@@ -59,6 +59,7 @@ function App() {
           <p>Lingua originale:
             <Flag code={getCountryCode(film.original_language)} />
             {film.original_language.toUpperCase()}</p>
+          <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="Poster" />
           <p>Voto medio: {film.vote_average}</p>
         </div>
       ))}
@@ -70,6 +71,7 @@ function App() {
             <Flag code={getCountryCode(serie.original_language)} />
             {serie.original_language.toUpperCase()}
           </p>
+          <img src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`} alt="Poster" />
           <p>Voto medio: {serie.vote_average}</p>
         </div>
       ))}
