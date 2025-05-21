@@ -44,7 +44,7 @@ function App() {
       setTvSerie(resp.data.results)
     })
   };
-
+  // rating delle stelle
   const starsVote = (vote) => {
     const votePerStars = Math.ceil(vote / 2);
     let maxStars = 5;
@@ -59,38 +59,46 @@ function App() {
     return stars
   }
 
-
-
   return (
     <>
-      <h1>Cerca film e serie TV</h1>
-      <form onSubmit={handleEndpoint}>
-        <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
-        <button type="submit">Cerca</button>
-      </form>
-      {films.map((film) => (
-        <div key={film.id}>
-          <h3>{film.title}</h3>
-          <p>Titolo originale: {film.original_title}</p>
-          <p>Lingua originale:
-            <Flag code={getCountryCode(film.original_language)} />
-            {film.original_language.toUpperCase()}</p>
-          <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="Poster" />
-          <span>Voto medio: {Math.ceil(film.vote_average / 2)}</span> {starsVote(film.vote_average)}
+      <header>
+        <div className="container">
+          <h1>Netflix</h1>
+          <form onSubmit={handleEndpoint}>
+            <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
+            <button type="submit">Cerca</button>
+          </form>
         </div>
-      ))}
-      {tvSerie.map((serie) => (
-        <div key={serie.id}>
-          <h3>{serie.name}</h3>
-          <p>Titolo originale: {serie.original_name}</p>
-          <p>Lingua originale:
-            <Flag code={getCountryCode(serie.original_language)} />
-            {serie.original_language.toUpperCase()}
-          </p>
-          <img src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`} alt="Poster" />
-          <span>Voto medio: {Math.ceil(serie.vote_average / 2)}</span> {starsVote(serie.vote_average)}
-        </div>
-      ))}
+      </header>
+      <div className="container2 d-flex">
+        {films.map((film) => (
+          <div key={film.id}>
+            <div className="card-img">
+              <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} alt="Poster" />
+            </div>
+            <h3 className="card-title">{film.title}</h3>
+            <p className="card-text">Titolo originale: {film.original_title}</p>
+            <p>Lingua originale:
+              <Flag className="bandiere" code={getCountryCode(film.original_language)} />
+              {film.original_language.toUpperCase()}</p>
+            <p>Voto medio: {Math.ceil(film.vote_average / 2)}</p> {starsVote(film.vote_average)}
+          </div>
+        ))};
+        {tvSerie.map((serie) => (
+          <div key={serie.id}>
+            <div className="card-img">
+              <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt="Poster" />
+            </div>
+            <h3 className="card-title">{serie.name}</h3>
+            <p className="card-text">Titolo originale: {serie.original_name}</p>
+            <p>Lingua originale:
+              <Flag className="bandiere" code={getCountryCode(serie.original_language)} />
+              {serie.original_language.toUpperCase()}
+            </p>
+            <p>Voto medio: {Math.ceil(serie.vote_average / 2)}</p> {starsVote(serie.vote_average)}
+          </div>
+        ))}
+      </div>
     </>
   )
 }
