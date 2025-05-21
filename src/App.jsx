@@ -45,10 +45,22 @@ function App() {
     })
   };
 
+  let otherStars = 5;
+  let vote = 3;
+  const stars = [];
+
+  for (let i = 0; i < vote; i++) {
+    stars.push(<i key={i} className="fa-solid fa-star"></i>);
+  }
+  for (let i = 0; i < otherStars - vote; i++) {
+    stars.push(<i className="fa-regular fa-star"></i>)
+  }
+
 
   return (
     <>
       <h1>Cerca film e serie TV</h1>
+      {stars}
       <form onSubmit={handleEndpoint}>
         <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
         <button type="submit">Cerca</button>
@@ -61,7 +73,7 @@ function App() {
             <Flag code={getCountryCode(film.original_language)} />
             {film.original_language.toUpperCase()}</p>
           <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="Poster" />
-          <span>Voto medio: {Math.floor(film.vote_average / 2)}</span> <i className="fa-solid fa-star"></i> <i className="fa-regular fa-star"></i>
+          <span>Voto medio: {Math.ceil(film.vote_average / 2)}</span> {stars}
         </div>
       ))}
       {tvSerie.map((serie) => (
@@ -73,7 +85,7 @@ function App() {
             {serie.original_language.toUpperCase()}
           </p>
           <img src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`} alt="Poster" />
-          <span>Voto medio: {Math.floor(serie.vote_average / 2)}</span>  <i className="fa-solid fa-star"></i> <i className="fa-regular fa-star"></i>
+          <span>Voto medio: {Math.ceil(serie.vote_average / 2)}</span> {stars}
         </div>
       ))}
     </>
