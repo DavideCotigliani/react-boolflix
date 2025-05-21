@@ -72,9 +72,14 @@ function App() {
             <li><h4>Aggiunti di recente</h4></li>
             <li><h4>La mia lista</h4></li>
           </ul>
-          <form onSubmit={handleEndpoint}>
+          <form className="form" onSubmit={handleEndpoint}>
             <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
             <button type="submit">Cerca</button>
+            <i className="fa-solid fa-bell text-white"></i>
+            <div className="icon-image">
+              <img src="/Netflix-avatar.png" alt="" />
+            </div>
+            <i class="fa-solid fa-caret-down text-white"></i>
           </form>
         </div>
       </header>
