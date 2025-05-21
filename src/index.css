@@ -85,3 +85,15 @@ button {
   margin: 5px 0px;
   text-align: center;
 }
+
+li {
+  color: white;
+  padding: 0px 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}

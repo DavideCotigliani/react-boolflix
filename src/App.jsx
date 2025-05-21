@@ -64,6 +64,14 @@ function App() {
       <header>
         <div className="container">
           <h1>Netflix</h1>
+          <ul>
+            <li><h4>Home</h4></li>
+            <li><h4>Serie TV</h4></li>
+            <li><h4>Film</h4></li>
+            <li><h4>Originali</h4></li>
+            <li><h4>Aggiunti di recente</h4></li>
+            <li><h4>La mia lista</h4></li>
+          </ul>
           <form onSubmit={handleEndpoint}>
             <input type="text" name="title" placeholder="Cerca film o serie tv" value={userDigit} onChange={handleUserChange} />
             <button type="submit">Cerca</button>
