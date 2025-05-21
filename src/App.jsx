@@ -45,6 +45,7 @@ function App() {
     })
   };
 
+
   return (
     <>
       <h1>Cerca film e serie TV</h1>
@@ -60,7 +61,7 @@ function App() {
             <Flag code={getCountryCode(film.original_language)} />
             {film.original_language.toUpperCase()}</p>
           <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt="Poster" />
-          <p>Voto medio: {film.vote_average}</p>
+          <span>Voto medio: {Math.floor(film.vote_average / 2)}</span> <i className="fa-solid fa-star"></i> <i className="fa-regular fa-star"></i>
         </div>
       ))}
       {tvSerie.map((serie) => (
@@ -72,7 +73,7 @@ function App() {
             {serie.original_language.toUpperCase()}
           </p>
           <img src={`https://image.tmdb.org/t/p/w300${serie.poster_path}`} alt="Poster" />
-          <p>Voto medio: {serie.vote_average}</p>
+          <span>Voto medio: {Math.floor(serie.vote_average / 2)}</span>  <i className="fa-solid fa-star"></i> <i className="fa-regular fa-star"></i>
         </div>
       ))}
     </>
