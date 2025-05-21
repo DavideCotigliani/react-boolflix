@@ -70,32 +70,44 @@ function App() {
           </form>
         </div>
       </header>
-      <div className="container2 d-flex">
+      <div className="container2">
         {films.map((film) => (
-          <div key={film.id}>
+          <div key={film.id} className="card">
             <div className="card-img">
               <img src={`https://image.tmdb.org/t/p/w342${film.poster_path}`} alt="Poster" />
             </div>
-            <h3 className="card-title">{film.title}</h3>
-            <p className="card-text">Titolo originale: {film.original_title}</p>
-            <p>Lingua originale:
-              <Flag className="bandiere" code={getCountryCode(film.original_language)} />
-              {film.original_language.toUpperCase()}</p>
-            <p>Voto medio: {Math.ceil(film.vote_average / 2)}</p> {starsVote(film.vote_average)}
+            <div className="overlay">
+              <h3 className="card-title">{film.title}</h3>
+              <p className="card-text">Titolo originale: {film.original_title}</p>
+              <div className="card-language">
+                <p>Lingua originale:
+                  <Flag className="bandiere" code={getCountryCode(film.original_language)} />
+                  {film.original_language.toUpperCase()}</p>
+              </div>
+              <div className="card-vote">
+                <p>Voto medio: {Math.ceil(film.vote_average / 2)}</p> {starsVote(film.vote_average)}
+              </div>
+            </div>
           </div>
-        ))};
+        ))}
         {tvSerie.map((serie) => (
-          <div key={serie.id}>
-            <div className="card-img">
+          <div key={serie.id} className="card">
+            <div className="card-img px-3">
               <img src={`https://image.tmdb.org/t/p/w342${serie.poster_path}`} alt="Poster" />
             </div>
-            <h3 className="card-title">{serie.name}</h3>
-            <p className="card-text">Titolo originale: {serie.original_name}</p>
-            <p>Lingua originale:
-              <Flag className="bandiere" code={getCountryCode(serie.original_language)} />
-              {serie.original_language.toUpperCase()}
-            </p>
-            <p>Voto medio: {Math.ceil(serie.vote_average / 2)}</p> {starsVote(serie.vote_average)}
+            <div className="overlay">
+              <h3 className="card-title">{serie.name}</h3>
+              <p className="card-text">Titolo originale: {serie.original_name}</p>
+              <div className="card-language">
+                <p>Lingua originale:
+                  <Flag className="bandiere" code={getCountryCode(serie.original_language)} />
+                  {serie.original_language.toUpperCase()}
+                </p>
+              </div>
+              <div className="card-vote">
+                <p>Voto medio: {Math.ceil(serie.vote_average / 2)}</p> {starsVote(serie.vote_average)}
+              </div>
+            </div>
           </div>
         ))}
       </div>
